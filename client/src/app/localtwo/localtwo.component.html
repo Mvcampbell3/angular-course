@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Two-Way Binding vs. Local Reference</h2>
+      <p>The example on the left shows how to grab data from the html template, pass it through to properties on the component, and get values back into the template using two-way binding</p>
+      <p>The right hand example is doing a similiar job, but by using a local reference in the HTML template. It assigns the input to a local reference in the template, and then through an event, sends the informaiton on the whole element through to a method on the component. We can access information on that element as we would any HTML element. This example uses .value since we are using a HTMLInputElement</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="left-side col-sm-6 col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="two">Names (two-way binding)</label>
+            <input type="text" name="two" id="two" class="form-control" [(ngModel)]='name'>
+            <button class="btn btn-primary mt-2" (click)='onNameSubmit()'>Add</button>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12" *ngFor='let name of names'>
+          <p>{{name}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-side col-sm-6 col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="local">Usernames (local reference)</label>
+            <input type="text" name="local" id="local" class="form-control" #usernameInput>
+            <button class="btn btn-primary mt-2" (click)='onUsernameSubmit(usernameInput)'>Add</button>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12" *ngFor='let username of usernames'>
+          <p>{{username}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Takeaway</h2>
+      <p>These are two ways to pass information between your HTML template and the Component TS file. The advantage of two-way binding is that the property of the component is always up to date with the value of the input and visa-versa. The advantage of using a local reference is having access to the entire HTML element.</p>
+      <p>If you are using the value in the input to update the page real time, for example, a search box which displays possible outcomes for each individual input, two-way binding would be the way to go. On the other hand, if you wanted to change the class or other HTML attributes of the element after an event, you might want to use a local reference.</p>
+    </div>
+  </div>
+</div>
