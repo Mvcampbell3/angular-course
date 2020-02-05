@@ -17,8 +17,6 @@ export class LocaltwoComponent implements OnInit {
   name: string = "";
 
   onUsernameSubmit(usernameInput: HTMLInputElement) {
-    console.log(usernameInput)
-    console.log(usernameInput.value)
     this.usernames.push(usernameInput.value)
     usernameInput.setAttribute('disabled', "true");
     setTimeout(() => {
@@ -28,7 +26,6 @@ export class LocaltwoComponent implements OnInit {
   }
 
   onNameSubmit() {
-    console.log('clicked')
     console.log(this.name)
     this.names.push(this.name);
     this.name = "";
